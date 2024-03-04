@@ -6,8 +6,10 @@
 | nick_name              | text | null: false|
 | email                  | string | null: false,unique: true|
 | encrypted_password     | string | null: false |
-| name1                  | text   | null: false |
-| name2                  | text   | null: false |
+| name1                  | string   | null: false |
+| name2                  | string   | null: false |
+| name3                  | string   | null: false |
+| name4                  | string   | null: false |
 | date_of_birth          | date   | null: false |
 
 ### Association
@@ -19,23 +21,20 @@
 ## items テーブル
 |Column|Type|Options|
 |------|----|-------|
-| image                               | string | null: false|
-| name                                | text | null: false,unique: true|
-| explantion                          | string | null: false |
-| category                            | text   | null: false |
-| situation                           | text   | null: false |
-| delivery_charge                     | date   | null: false |
-| region_of_origin                    | date   | null: false |
-| number_of_days_until_shipping       | date   | null: false |
-| price                               | text   | null: false |
-| commission                          | text   | null: false |
-| sales_profit                        | text   | null: false |
+| name                                | string | null: false|
+| explantion                          | text | null: false |
+| category_id                            | integer   | null: false |
+| situation_id                           | integer   | null: false |
+| delivery_charge_id                     | integer   | null: false |
+| region_of_origin_id                    | integer   | null: false |
+| number_of_days_until_shipping_id       | integer   | null: false |
+| price                               | integer   | null: false |
 | user                            | references | null: false,foreign_key: true|
 
 ### Association
 
 - belongs_to :user
-- has_one : purchase_records
+- has_one : purchase_record
 
 ## purchase_record テーブル
 |Column|Type|Options|
@@ -53,12 +52,12 @@
 ## shipping_informaiton テーブル
 |Column|Type|Options|
 |------|----|-------|
-| post_code                   | date   | null: false |
+| post_code                   | string   | null: false |
 | prefe_ctures                | date   | null: false |
-| municipality                | date   | null: false |
-| street_address              | date   | null: false |
-| building                    | date   | null: false |
-| telephone_number            | date   | null: false |
+| municipality                | string   | null: false |
+| street_address              | string   | null: false |
+| building                    | string   | |
+| telephone_number            | string   | null: false |
 
 ### Association
 

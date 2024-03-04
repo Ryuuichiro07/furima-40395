@@ -6,10 +6,10 @@
 | nick_name              | text | null: false|
 | email                  | string | null: false,unique: true|
 | encrypted_password     | string | null: false |
-| name1                  | string   | null: false |
-| name2                  | string   | null: false |
-| name3                  | string   | null: false |
-| name4                  | string   | null: false |
+| first_name                  | string   | null: false |
+| last_name                  | string   | null: false |
+| first_name_kana                  | string   | null: false |
+| last_name_kana                  | string   | null: false |
 | date_of_birth          | date   | null: false |
 
 ### Association
@@ -39,9 +39,8 @@
 ## purchase_record テーブル
 |Column|Type|Options|
 |------|----|-------|
-| buyer                          | date   | null: false |
-| purchase                        | date   | null: false |
 | user                            | references | null: false,foreign_key: true|
+| item                            |references | null: false,foreign_key: true|
 
 ### Association
 
@@ -53,7 +52,7 @@
 |Column|Type|Options|
 |------|----|-------|
 | post_code                   | string   | null: false |
-| prefe_ctures                | date   | null: false |
+| prefecture_id                | integer   | null: false |
 | municipality                | string   | null: false |
 | street_address              | string   | null: false |
 | building                    | string   | |

@@ -3,7 +3,7 @@
 ## users テーブル
 |Column|Type|Options|
 |------|----|-------|
-| nick_name              | text | null: false|
+| nick_name              | string | null: false|
 | email                  | string | null: false,unique: true|
 | encrypted_password     | string | null: false |
 | first_name                  | string   | null: false |
@@ -34,9 +34,9 @@
 ### Association
 
 - belongs_to :user
-- has_one : purchase_record
+- has_one :purchase_record
 
-## purchase_record テーブル
+## purchase_records テーブル
 |Column|Type|Options|
 |------|----|-------|
 | user                            | references | null: false,foreign_key: true|
@@ -46,13 +46,13 @@
 
 -  belongs_to :user
 -  belongs_to :item
--  has_one : shipping_informaiton
+-  has_one :shipping_informaiton
 
-## shipping_informaiton テーブル
+## shipping_informaitons テーブル
 |Column|Type|Options|
 |------|----|-------|
 | post_code                   | string   | null: false |
-| prefecture_id                | integer   | null: false |
+| region_of_origin_id                | integer   | null: false |
 | municipality                | string   | null: false |
 | street_address              | string   | null: false |
 | building                    | string   | |
@@ -60,4 +60,4 @@
 
 ### Association
 
--  belongs_to : purchase_record
+-  belongs_to :purchase_record

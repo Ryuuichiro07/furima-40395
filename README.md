@@ -57,6 +57,7 @@
 | street_address              | string   | null: false |
 | building                    | string   | |
 | telephone_number            | string   | null: false |
+| purchase_record                            |references | null: false,foreign_key: true|
 
 ### Association
 

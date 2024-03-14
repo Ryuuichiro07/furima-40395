@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
 
 before_action :authenticate_user!, only: [:new, :create]
-before_action :before_move_to_edit, only: :edit
 before_action :set_item, only: [:show, :edit, :update]
+before_action :before_move_to_edit, only: :edit
   
 
 def index
@@ -49,7 +49,6 @@ def set_item
 end
 
 def before_move_to_edit
-  @item = Item.find(params[:id])
   unless user_signed_in? && @item.user == current_user
     redirect_to action: :index
   end

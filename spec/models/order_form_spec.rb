@@ -12,6 +12,12 @@ RSpec.describe OrderForm, type: :model do
       it '入力された情報が問題ない' do
         expect(@order_form).to be_valid
       end
+      it "建物が空でも登録できる" do
+        @order_form.building = ' '
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).not_to include("Building can't be blank")
+      end
+
     end
 
     context '商品配送先情報の登録ができない時' do
@@ -85,6 +91,18 @@ RSpec.describe OrderForm, type: :model do
         @order_form.telephone_number = '090-1234-5678 '
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include "Telephone number is invalid"
+      end
+
+      it 'is invalid without a user_id' do
+       @order_form.user_id = nil
+       @order_form.valid?
+       expect(@order_form.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'is invalid without an item_id' do
+       @order_form.item_id = nil
+       @order_form.valid?
+       expect(@order_form.errors.full_messages).to include("Item can't be blank")
       end
     end  
   end  

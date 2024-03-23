@@ -1,4 +1,5 @@
 class PurchaseRecordsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create,]
   before_action :set_item, only: [:index, :create]
 
   def index
@@ -6,7 +7,9 @@ class PurchaseRecordsController < ApplicationController
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
     @order_form = OrderForm.new
    
-    redirect_to root_path unless @item.purchase_records.blank?
+    if current_user.id == @item.user.id || @item.purchase_record.present?
+      redirect_to root_path
+    end
   end
 
 

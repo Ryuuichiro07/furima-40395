@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
 
-before_action :authenticate_user!, only: [:new, :create, :destroy]
-before_action :set_item, only: [:show, :edit, :update]
-before_action :before_move_to_edit, only: :edit
-  
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :before_move_to_edit, only: :edit
 
 def index
   @items = Item.order("created_at DESC")
@@ -23,11 +22,10 @@ def create
 end
 
 def show
-  
 end
 
 def edit
-  
+  redirect_to root_path unless @item.purchase_records.blank?
 end
 
 def update
@@ -39,8 +37,7 @@ def update
 end
 
 def destroy
-  item = Item.find(params[:id])
-  item.destroy
+  @item.destroy
   redirect_to root_path
 end
 
@@ -55,10 +52,7 @@ def set_item
 end
 
 def before_move_to_edit
-  unless user_signed_in? && @item.user == current_user
-    redirect_to action: :index
-  end
+  redirect_to action: :index unless user_signed_in? && @item.user == current_user
 end
-
 
 end

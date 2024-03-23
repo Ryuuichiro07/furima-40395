@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   has_one_attached :image
+  has_many :purchase_records
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

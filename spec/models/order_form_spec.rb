@@ -51,6 +51,12 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include "Region of origin can't be blank"
       end
 
+      it 'region_of_origin_idが___では登録できない' do
+        @order_form.region_of_origin_id = '1'
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include "Region of origin can't be blank"
+      end
+      
       it 'municipalityが空白では登録できない' do
         @order_form.municipality = ' '
         @order_form.valid?

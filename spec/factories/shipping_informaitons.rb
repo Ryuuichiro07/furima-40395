@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :shipping_informaiton do
-    association :purchase_record 
+    
   
-
+    token {'tok_abcdefghijk00000000000000000'}
     post_code              {Faker::Number.number(digits: 3) + '-' + Faker::Number.number(digits: 4) }
     region_of_origin_id                 {Faker::Number.between(from: 2, to: 48) }
     municipality              {Faker::Japanese::Address.city }

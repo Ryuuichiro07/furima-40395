@@ -25,7 +25,7 @@ def show
 end
 
 def edit
-  redirect_to root_path unless @item.purchase_records.blank?
+  redirect_to root_path unless @item.purchase_record.blank?
 end
 
 def update

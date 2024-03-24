@@ -1,6 +1,6 @@
 class OrderForm
   include ActiveModel::Model
-  attr_accessor :user_id,:item_id,:post_code,:region_of_origin_id,:municipality,:street_address,:building,:telephone_number,:purchase_record,:token
+  attr_accessor :user_id,:item_id,:post_code,:region_of_origin_id,:municipality,:street_address,:building,:telephone_number,:token
   
   with_options presence: true do
     validates :post_code, format: { with: /\A\d{3}-\d{4}\z/ }
